@@ -1,29 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
-export default class CommentList extends Component {
-  constructor(props) {
-    super(props);
+const CommentList = (props) => {
+  const list = props.comments.map(comment => <li key={comment}>{comment}</li>)
+  return (
+    <ul className="comment-list">
 
-    this.state = { comments: []};
-  }
-
-  // handleChange(event) {
-  //   this.setState({ comment: event.target.value });
-  // }
-
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   this.setState( {comment: ''});
-  // }
-
-  render() {
-    return(
-      <div className="comment-list">
-        {/* <textarea
-         value={this.state.comment}
-         onChange={this.handleChange.bind(this)} />
-        <button action='submit'> Submit Comment</button> */}
-      </div>
-    )
-  }
+    </ul>
+  )
 }
+function mapStateToProps(state) {
+  return { comments: state.comments };
+}
+export default connect(mapStateToProps)(CommentList);

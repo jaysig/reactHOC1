@@ -26,6 +26,9 @@ class Header extends Component {
           <li className="nav-item">
             { this.authButton()}
           </li>
+          <li className="nav-item">
+            <Link to="/users">Users</Link>
+          </li>
         </ul>
       </nav>
     )

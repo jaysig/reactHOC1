@@ -9,8 +9,10 @@ import App from './components/app';
 import Resources from './components/resources';
 import UserList from './components/user_list.js';
 import reducers from './reducers';
+import Async from './middlewares/async.js';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+
+const createStoreWithMiddleware = applyMiddleware(Async)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>

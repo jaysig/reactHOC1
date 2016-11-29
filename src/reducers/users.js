@@ -3,9 +3,11 @@ import {
 } from '../actions/types';
 
 export default function(state = [], action) {
+  console.log(action);
   switch (action.type) {
     case FETCH_USERS:
-    return [...state, ...action.payload];
+    console.log(action);
+    return [...state, ...action.payload.data ];
   }
   return state;
 }

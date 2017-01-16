@@ -10,6 +10,7 @@ import App from './components/app';
 import Resources from './components/resources';
 import SignIn from './components/auth/signin.js';
 import UserList from './components/user_list.js';
+import Signout from './components/auth/signout.js';
 
 import reducers from './reducers';
 import Async from './middlewares/async.js';
@@ -24,6 +25,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <Route path="resources" component={requireAuth(Resources)} />
         <Route path="signin" component={SignIn} />
+        <Route path="signout" component={Signout} />
         <Route path="users" component={requireAuth(UserList)} />
       </Route>
     </Router>

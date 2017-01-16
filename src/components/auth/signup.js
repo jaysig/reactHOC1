@@ -20,7 +20,7 @@ class SignUp extends Component {
 
             type={ type }
           />
-          { touched && error && <span>{ error }</span> }
+          { touched && error && <span className="error">{ error }</span> }
         </div>
       </div>
     );

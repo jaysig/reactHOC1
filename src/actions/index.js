@@ -1,6 +1,8 @@
 import { SAVE_COMMENT, CHANGE_AUTH, FETCH_USERS } from './types';
 import axios from 'axios';
 
+const API_URL = "http://localhost:3090"; //Where the server is
+
 export function saveComment(comment) {
   return {
     type: SAVE_COMMENT,
@@ -27,6 +29,7 @@ export function signinUser({ email, password }) {
   // Thunk gives us access to our dispatcher
   return function(dispatch) {
     // Submit email/password to the server
+    axios.post(`${API_URL}/signin`, { email, password });
 
     // If request is good...
     /// - Update State to indicate user is authenticated
@@ -34,6 +37,6 @@ export function signinUser({ email, password }) {
     /// - redirect to the route '/feature'
 
     // If request is bad...
-    // - show and error to the user    
+    // - show and error to the user
   }
 }

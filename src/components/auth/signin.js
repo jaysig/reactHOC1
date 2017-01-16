@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 class SignIn extends Component {
 
-  handleFormSubmit(props) {
-    console.log(props);
+  handleFormSubmit({ email, password}) {
+    console.log(email, password);
+    this.props.signinUser({ email, password });
   }
 
   renderField( { input, label, type, className, req, meta: { touched, error } } ) {
@@ -141,10 +143,11 @@ let ReduxSignIn =
 
 // connect: first argument is state(mapStateToProps), 2nd is actions (mapDispatchToProps)
 ReduxSignIn = connect(
-  state => ({
-   // initialValues: state.account.data  pull initial values from account reducer
-    store: state.store,
-  }),
+  // state => ({
+  //  // initialValues: state.account.data  pull initial values from account reducer
+  //   store: state.store,
+  // }),
+  null, actions
   // { logIn: loginFunction, register: registerFunction }
 )(ReduxSignIn);
 

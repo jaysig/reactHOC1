@@ -1,4 +1,4 @@
-import { SAVE_COMMENT, CHANGE_AUTH, FETCH_USERS } from './types';
+import { SAVE_COMMENT, CHANGE_AUTH, FETCH_USERS, AUTH_USER } from './types';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 
@@ -34,6 +34,7 @@ export function signinUser({ email, password }) {
       .then( response => {
         // If request is good...
         // - Update State to indicate user is authenticated
+        dispatch({ type: AUTH_USER });
         // - Save the JWT token
         // - redirect to the route '/feature'
         browserHistory.push('/feature');

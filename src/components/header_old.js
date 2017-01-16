@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class Header extends Component {
-  // authButton() {
-  //   if (this.props.authenticated) {
-  //     return <button onClick={() => this.props.authenticate(false)}>Sign Out</button>
-  //   } else {
-  //     return <button onClick={() => this.props.authenticate(true)}> Sign In</button>
-  //   }
-  //   return <button>Toogle Auth </button>;
-  // }
+  authButton() {
+    if (this.props.authenticated) {
+      return <button onClick={() => this.props.authenticate(false)}>Sign Out</button>
+    } else {
+      return <button onClick={() => this.props.authenticate(true)}> Sign In</button>
+    }
+    return <button>Toogle Auth </button>;
+  }
 
   render() {
     return (
@@ -24,7 +24,7 @@ class Header extends Component {
             <Link to="/resources">Resources</Link>
           </li>
           <li className="nav-item">
-            <Link to="/signin">Sign In</Link>
+            { this.authButton()}
           </li>
           <li className="nav-item">
             <Link to="/users">Users</Link>

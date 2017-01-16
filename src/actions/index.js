@@ -22,3 +22,18 @@ export function fetchUsers() {
     payload: request
   }
 }
+
+export function signinUser({ email, password }) {
+  // Thunk gives us access to our dispatcher
+  return function(dispatch) {
+    // Submit email/password to the server
+
+    // If request is good...
+    /// - Update State to indicate user is authenticated
+    /// - Save the JWT token
+    /// - redirect to the route '/feature'
+
+    // If request is bad...
+    // - show and error to the user    
+  }
+}

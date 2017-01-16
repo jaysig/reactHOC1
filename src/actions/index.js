@@ -1,4 +1,4 @@
-import { SAVE_COMMENT, CHANGE_AUTH, FETCH_USERS, AUTH_USER } from './types';
+import { SAVE_COMMENT, CHANGE_AUTH, FETCH_USERS, AUTH_USER, AUTH_ERROR } from './types';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 
@@ -43,6 +43,14 @@ export function signinUser({ email, password }) {
       .catch(() => {
         // If request is bad...
         // - show and error to the user
+        dispatch(authError('Bad Login Info'));
       });
   }
+}
+
+export function authError(error) {
+  return {
+    type: AUTH_ERROR,
+    payload: error
+  };
 }

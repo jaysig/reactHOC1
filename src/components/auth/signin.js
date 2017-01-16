@@ -25,6 +25,18 @@ class SignIn extends Component {
       </div>
     );
   }
+
+  renderAlert() {
+    console.log(this);
+    console.log(this.props,'testing');
+    if (this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      )
+    }
+  }
   render() {
     const {
      pristine,
@@ -74,6 +86,7 @@ class SignIn extends Component {
          </div> */}
 
           <div className="input-wrap">
+            { this.renderAlert() }
             <button
               className="btn btn-primary"
               type="submit" disabled={ invalid || submitting }
@@ -143,11 +156,12 @@ let ReduxSignIn =
 
 // connect: first argument is state(mapStateToProps), 2nd is actions (mapDispatchToProps)
 ReduxSignIn = connect(
-  // state => ({
-  //  // initialValues: state.account.data  pull initial values from account reducer
-  //   store: state.store,
-  // }),
-  null, actions
+  state => ({
+   // initialValues: state.account.data  pull initial values from account reducer
+    store: state.store,
+    errorMessage: state.auth.error,
+  }),
+  actions
   // { logIn: loginFunction, register: registerFunction }
 )(ReduxSignIn);
 

@@ -27,8 +27,6 @@ class SignIn extends Component {
   }
 
   renderAlert() {
-    console.log(this);
-    console.log(this.props,'testing');
     if (this.props.errorMessage) {
       return (
         <div className="alert alert-danger">

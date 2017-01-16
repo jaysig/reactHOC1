@@ -4,27 +4,36 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class Header extends Component {
-  // authButton() {
-  //   if (this.props.authenticated) {
-  //     return <button onClick={() => this.props.authenticate(false)}>Sign Out</button>
-  //   } else {
-  //     return <button onClick={() => this.props.authenticate(true)}> Sign In</button>
-  //   }
-  //   return <button>Toogle Auth </button>;
-  // }
+  authorized() {
+    if (this.props.authenticated) {
+      // return <button onClick={() => this.props.authenticate(false)}>Sign Out</button>
+      return  <li className="nav-item">
+        <Link to="/signout" className="nav-link">Sign Out</Link>
+      </li>
+    } else {
+      return [
+        <li className="nav-item" key={1}>
+          <Link to="/signin" className="nav-link">Sign In</Link>
+        </li>,
+        <li className="nav-item" key={2}>
+          <Link to="/signup" className="nav-link">Sign Up</Link>
+        </li>
+      ]
+    }
+    // return <button>Toogle Auth </button>;
+  }
 
   render() {
     return (
       <nav className="navbar navbar-light">
+        <Link to="/" className="navbar-brand">Redux Auth</Link>
         <ul className="nav navbar-nav">
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to="/">Home</Link>
-          </li>
+          </li> */}
+          { this.authorized() }
           <li className="nav-item">
             <Link to="/resources">Resources</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/signin">Sign In</Link>
           </li>
           <li className="nav-item">
             <Link to="/users">Users</Link>
@@ -35,6 +44,6 @@ class Header extends Component {
   }
 }
 function mapStateToProps(state) {
-  return { authenticated: state.authenticated };
+  return { authenticated: state.auth.authenticated };
 }
 export default connect(mapStateToProps, actions)(Header)

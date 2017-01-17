@@ -1,5 +1,5 @@
 import { SAVE_COMMENT, CHANGE_AUTH, FETCH_USERS,
-  AUTH_USER, AUTH_ERROR, UNAUTH_USER } from './types';
+  AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 
@@ -86,7 +86,10 @@ export function fetchMessage() {
       headers: { authorization: localStorage.getItem('token') }
     })
     .then( response => {
-      console.log(response);
+      dispatch({
+      type: FETCH_MESSAGE,
+      payload: response.data.message
+      });
     })
   }
 }

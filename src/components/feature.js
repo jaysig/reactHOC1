@@ -6,19 +6,18 @@ import * as actions from '../actions';
 class Feature extends Component {
 
   componentWillMount() {
-    console.log(this.props);
     this.props.fetchMessage();
   }
 
   render() {
     return (
       <div className="">
-        This is a feature
+        { this.props.message }
       </div>
     )
   }
 }
-// function mapStateToProps(state) {
-//   return { authenticated: state.auth.authenticated };
-// }
-export default connect(null, actions)(Feature)
+function mapStateToProps(state) {
+  return { message: state.auth.message };
+}
+export default connect(mapStateToProps, actions)(Feature)

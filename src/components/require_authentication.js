@@ -8,6 +8,7 @@ export default function(ComposedComponent) {
     }
 
     componentWillMount() {
+      console.log(this.props);
       if (!this.props.authenticated) {
         this.context.router.push('/');
       }
@@ -25,7 +26,7 @@ export default function(ComposedComponent) {
   }
 
   function mapStateToProps(state) {
-    return { authenticated: state.authenticated };
+    return { authenticated: state.auth.authenticated };
   }
 
   return connect(mapStateToProps)(Authentication);

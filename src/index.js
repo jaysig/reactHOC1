@@ -12,7 +12,8 @@ import SignIn from './components/auth/signin.js';
 import UserList from './components/user_list.js';
 import Signout from './components/auth/signout.js';
 import SignUp from './components/auth/signup.js';
-
+import Feature from './components/feature.js';
+import Welcome from './components/welcome.js'
 import reducers from './reducers';
 import Async from './middlewares/async.js';
 
@@ -24,11 +25,13 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router history={browserHistory} >
       <Route path="/" component={App}>
+        <IndexRoute component={Welcome} />
         <Route path="resources" component={requireAuth(Resources)} />
         <Route path="signin" component={SignIn} />
         <Route path="signup" component={SignUp} />
         <Route path="signout" component={Signout} />
         <Route path="users" component={requireAuth(UserList)} />
+        <Route path="feature" component={requireAuth(Feature)} />
       </Route>
     </Router>
   </Provider>

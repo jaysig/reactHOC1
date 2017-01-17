@@ -78,3 +78,15 @@ export function signoutUser() {
     type: UNAUTH_USER,
   };
 }
+
+export function fetchMessage() {
+  return function(dispatch) {
+    // Video 116
+    axios.get(API_URL, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+    .then( response => {
+      console.log(response);
+    })
+  }
+}

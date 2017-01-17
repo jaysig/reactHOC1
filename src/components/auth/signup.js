@@ -5,9 +5,12 @@ import * as actions from '../../actions';
 
 class SignUp extends Component {
 
-  handleFormSubmit({ email, password}) {
-    console.log(email, password);
-    this.props.signupUser({ email, password });
+  // handleFormSubmit({ email, password}) {
+  //   console.log(email, password);
+  //   this.props.signupUser({ email, password });
+  // }
+  handleFormSubmit(formProps) {
+    this.props.signupUser(formProps);
   }
 
   renderField( { input, label, type, className, req, meta: { touched, error } } ) {
